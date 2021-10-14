@@ -17,7 +17,7 @@ public class Cookbook {
     private String name;
 
     @Column(nullable = false)
-    private Integer type;
+    private String type;
 
     @Column(nullable = false)
     private String material;
@@ -28,7 +28,7 @@ public class Cookbook {
     @Column(nullable = false, name = "create_date")
     private LocalDateTime createDate;
 
-    public Cookbook(String name, Integer type, String material, String recipe){
+    public Cookbook(String name, String type, String material, String recipe){
         this.name = name;
         this.type = type;
         this.material = material;

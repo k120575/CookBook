@@ -4,11 +4,13 @@ import com.cookbook.pojo.Cookbook;
 import com.cookbook.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.logging.Logger;
 
@@ -35,13 +37,13 @@ public class IndexController {
 
     @PostMapping(value = "/searchRecipe")
     public ModelAndView searchRecipe(@RequestParam("name") String name, ModelAndView modelAndView) {
-        Cookbook cookbook = recipeService.findByName(name);
-        logger.info(cookbook.toString());
-        if (Objects.nonNull(cookbook)){
-            modelAndView.addObject(cookbook);
+        List<Cookbook> cookbookList = recipeService.findByName(name);
+        logger.info(cookbookList.toString());
+        if (CollectionUtils.isEmpty(cookbookList)){
             modelAndView.setViewName("search");
             return modelAndView;
         }else {
+            cookbookList.forEach(modelAndView::addObject);
             modelAndView.setViewName("search");
             return modelAndView;
         }

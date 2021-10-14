@@ -5,7 +5,6 @@
     <title>Search</title>
 </head>
 <body>
-    ${cookbook.name}
-    ${cookbook.type}
+    <h2>${cookbook.name}  /  ${cookbook.type}</h2>
 </body>
 </html>

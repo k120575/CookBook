@@ -23,7 +23,7 @@ public class AddRecipeController {
 
     @PostMapping(value = "/addRecipe")
     public void addRecipe(@RequestParam("name") String name,
-                          @RequestParam("type") Integer type,
+                          @RequestParam("type") String type,
                           @RequestParam("material") String material,
                           @RequestParam("recipe") String recipe,
                           HttpServletRequest request,

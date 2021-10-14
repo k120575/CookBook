@@ -2,9 +2,11 @@ package com.cookbook.service;
 
 import com.cookbook.pojo.Cookbook;
 
+import java.util.List;
+
 public interface RecipeService {
 
-    void addRecipe(String name, Integer type, String material, String recipe);
+    void addRecipe(String name, String type, String material, String recipe);
 
-    Cookbook findByName(String name);
+    List<Cookbook> findByName(String name);
 }

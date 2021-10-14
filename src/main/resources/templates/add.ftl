@@ -21,9 +21,9 @@
                 <span class="input-group-addon"><i class="icon_profile"></i></span>
                 <select name="type" id="type" class="form-control">
                     <option value="" selected>---select---</option>
-                    <option value="1">中餐</option>
-                    <option value="2">西餐</option>
-                    <option value="3">甜點</option>
+                    <option value="中餐">中餐</option>
+                    <option value="西餐">西餐</option>
+                    <option value="甜點">甜點</option>
                 </select>
             </div>
 

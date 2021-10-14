@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface CookbookRepository extends JpaRepository<Cookbook, Integer> {
 
-    Cookbook findByName(String name);
+    List<Cookbook> findByNameLike(String name);
 
-    List<Cookbook> findByType(Integer type);
+    List<Cookbook> findByType(String type);
 
     List<Cookbook> findByMaterial(String material);
 }
