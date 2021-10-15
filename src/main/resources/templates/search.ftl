@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <title>Search</title>
 </head>
+
 <body>
-    <h2>${cookbook.name}  /  ${cookbook.type}</h2>
+<#list cookbookList as list>
+    <#if list??>
+        <h2>${list.name}  /  ${list.type}  /  ${list.material}</h2>
+    </#if>
+    <#else>
+    <h2>${errMsg}</h2>
+</#list>
+
 </body>
 </html>

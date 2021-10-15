@@ -24,12 +24,10 @@ public class RecipeServiceImpl implements RecipeService {
     public void addRecipe(String name, String type, String material, String recipe) {
         List<Cookbook> cookbookList = cookbookRepository.findByNameLike(name);
         if (CollectionUtils.isEmpty(cookbookList)){
-            cookbookList.forEach(cookbook -> {
-                cookbook = new Cookbook(name, type, material, recipe);
+                Cookbook cookbook = new Cookbook(name, type, material, recipe);
                 cookbook.setCreateDate(LocalDateTime.now());
                 cookbookRepository.saveAndFlush(cookbook);
                 logger.info("Add Succeed");
-            });
         } else {
             logger.info("Add Failed : already exists");
         }

@@ -38,12 +38,14 @@ public class IndexController {
     @PostMapping(value = "/searchRecipe")
     public ModelAndView searchRecipe(@RequestParam("name") String name, ModelAndView modelAndView) {
         List<Cookbook> cookbookList = recipeService.findByName(name);
-        logger.info(cookbookList.toString());
         if (CollectionUtils.isEmpty(cookbookList)){
+            logger.info("null");
+            modelAndView.addObject("errMsg", "SORRY null");
             modelAndView.setViewName("search");
             return modelAndView;
         }else {
-            cookbookList.forEach(modelAndView::addObject);
+            logger.info(cookbookList.toString());
+            modelAndView.addObject(cookbookList);
             modelAndView.setViewName("search");
             return modelAndView;
         }
