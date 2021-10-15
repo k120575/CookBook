@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Logger;
@@ -36,8 +37,20 @@ public class IndexController {
     }
 
     @PostMapping(value = "/searchRecipe")
-    public ModelAndView searchRecipe(@RequestParam("name") String name, ModelAndView modelAndView) {
-        List<Cookbook> cookbookList = recipeService.findByName(name);
+    public ModelAndView searchRecipe(String name, String type, ModelAndView modelAndView) {
+        List<Cookbook> cookbookList;
+        // name不為空
+        if (!Objects.equals(name, "") && Objects.equals(type, "")){
+            cookbookList = recipeService.findByName(name);
+            // type不為空
+        } else if (Objects.equals(name, "") && !Objects.equals(type, "")) {
+            cookbookList = recipeService.findByType(type);
+        } else if (!Objects.equals(name, "") && !Objects.equals(type, "")) {
+            cookbookList = recipeService.findByNameLikeAndType(name, type);
+        } else {
+            cookbookList = recipeService.findAll();
+        }
+
         if (CollectionUtils.isEmpty(cookbookList)){
             logger.info("null");
             modelAndView.addObject("errMsg", "SORRY 找不到相關資料");

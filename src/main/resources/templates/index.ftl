@@ -9,7 +9,7 @@
     <div class="container">
         <form class="form-vertical login-form" action="/cookbook/searchRecipe" method="post">
             <h3 class="form-title">
-                請輸入您的帳號與密碼
+                請輸入要搜尋的內容
             </h3>
             <div class="form-group">
                 <div class="input-icon">
@@ -17,14 +17,25 @@
                            autofocus="autofocus" data-rule-required="true" data-msg-required="請輸入帳號。"
                     />
                 </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_profile"></i></span>
+                    <select name="type" id="type" class="form-control">
+                        <option value="" selected>---select---</option>
+                        <option value="中餐">中餐</option>
+                        <option value="西餐">西餐</option>
+                        <option value="甜點">甜點</option>
+                    </select>
+                </div>
             </div>
-            <form class="form-vertical login-form" action="/cookbook/searchRecipe" method="post">
-                <button type="submit" class="submit btn btn-primary pull-right" style="display: inline">
+            <br>
+            <form class="form-vertical login-form" action="/cookbook/searchRecipe" method="post" style="float: right">
+                <button type="submit" class="submit btn btn-primary pull-right">
                     搜尋
                 </button>
             </form>
-            <form class="form-vertical login-form" action="/cookbook/add" method="post">
-                <button type="submit" class="submit btn btn-primary pull-right" style="display: inline">
+            <br>
+            <form class="form-vertical login-form" action="/cookbook/add" method="post" style="float: left">
+                <button type="submit" class="submit btn btn-primary pull-right">
                     增加
                 </button>
             </form>

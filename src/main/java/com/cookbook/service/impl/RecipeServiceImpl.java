@@ -42,4 +42,34 @@ public class RecipeServiceImpl implements RecipeService {
             return cookbookList;
         }
     }
+
+    @Override
+    public List<Cookbook> findByType(String type) {
+        List<Cookbook> cookbookList = cookbookRepository.findByType(type);
+        if (CollectionUtils.isEmpty(cookbookList)) {
+            return null;
+        } else {
+            return cookbookList;
+        }
+    }
+
+    @Override
+    public List<Cookbook> findByNameLikeAndType(String name, String type) {
+        List<Cookbook> cookbookList = cookbookRepository.findByNameLikeAndType("%" + name + "%", type);
+        if (CollectionUtils.isEmpty(cookbookList)) {
+            return null;
+        } else {
+            return cookbookList;
+        }
+    }
+
+    @Override
+    public List<Cookbook> findAll() {
+        List<Cookbook> cookbookList = cookbookRepository.findAll();
+        if (CollectionUtils.isEmpty(cookbookList)) {
+            return null;
+        } else {
+            return cookbookList;
+        }
+    }
 }
