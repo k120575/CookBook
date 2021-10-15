@@ -40,7 +40,7 @@ public class IndexController {
         List<Cookbook> cookbookList = recipeService.findByName(name);
         if (CollectionUtils.isEmpty(cookbookList)){
             logger.info("null");
-            modelAndView.addObject("errMsg", "SORRY null");
+            modelAndView.addObject("errMsg", "SORRY 找不到相關資料");
             modelAndView.setViewName("search");
             return modelAndView;
         }else {
