@@ -34,7 +34,7 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public List<Cookbook> findByName(String name) {
+    public List<Cookbook> findByNameLike(String name) {
         List<Cookbook> cookbookList = cookbookRepository.findByNameLike("%" + name + "%");
         if (CollectionUtils.isEmpty(cookbookList)) {
             return null;
@@ -66,6 +66,46 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public List<Cookbook> findAll() {
         List<Cookbook> cookbookList = cookbookRepository.findAll();
+        if (CollectionUtils.isEmpty(cookbookList)) {
+            return null;
+        } else {
+            return cookbookList;
+        }
+    }
+
+    @Override
+    public List<Cookbook> findByMaterialLike(String material) {
+        List<Cookbook> cookbookList = cookbookRepository.findByMaterialLike("%" + material + "%");
+        if (CollectionUtils.isEmpty(cookbookList)) {
+            return null;
+        } else {
+            return cookbookList;
+        }
+    }
+
+    @Override
+    public List<Cookbook> findByNameLikeAndMaterialLike(String name, String material) {
+        List<Cookbook> cookbookList = cookbookRepository.findByNameLikeAndMaterialLike("%" + name + "%", "%" + material + "%");
+        if (CollectionUtils.isEmpty(cookbookList)) {
+            return null;
+        } else {
+            return cookbookList;
+        }
+    }
+
+    @Override
+    public List<Cookbook> findByMaterialLikeAndType(String material, String type) {
+        List<Cookbook> cookbookList = cookbookRepository.findByMaterialLikeAndType("%" + material + "%", type);
+        if (CollectionUtils.isEmpty(cookbookList)) {
+            return null;
+        } else {
+            return cookbookList;
+        }
+    }
+
+    @Override
+    public List<Cookbook> findByNameLikeAndMaterialLikeAndType(String name, String material, String type) {
+        List<Cookbook> cookbookList = cookbookRepository.findByNameLikeAndMaterialLikeAndType("%" + name + "%", "%" + material + "%", type);
         if (CollectionUtils.isEmpty(cookbookList)) {
             return null;
         } else {

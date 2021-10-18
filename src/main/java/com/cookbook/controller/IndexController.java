@@ -37,16 +37,29 @@ public class IndexController {
     }
 
     @PostMapping(value = "/searchRecipe")
-    public ModelAndView searchRecipe(String name, String type, ModelAndView modelAndView) {
+    public ModelAndView searchRecipe(String name, String type, String material, ModelAndView modelAndView) {
         List<Cookbook> cookbookList;
         // name不為空
-        if (!Objects.equals(name, "") && Objects.equals(type, "")){
-            cookbookList = recipeService.findByName(name);
+        if (!Objects.equals(name, "") && Objects.equals(type, "") && Objects.equals(material, "")){
+            cookbookList = recipeService.findByNameLike(name);
             // type不為空
-        } else if (Objects.equals(name, "") && !Objects.equals(type, "")) {
+        } else if (Objects.equals(name, "") && !Objects.equals(type, "") && Objects.equals(material, "")) {
             cookbookList = recipeService.findByType(type);
-        } else if (!Objects.equals(name, "") && !Objects.equals(type, "")) {
+            // material不為空
+        } else if (Objects.equals(name, "") && Objects.equals(type, "") && !Objects.equals(material, "")) {
+            cookbookList = recipeService.findByMaterialLike(material);
+            // name type不為空
+        } else if (!Objects.equals(name, "") && !Objects.equals(type, "") && Objects.equals(material, "")) {
             cookbookList = recipeService.findByNameLikeAndType(name, type);
+            // name material不為空
+        } else if (!Objects.equals(name, "") && Objects.equals(type, "") && !Objects.equals(material, "")) {
+            cookbookList = recipeService.findByNameLikeAndMaterialLike(name, material);
+            // material type不為空
+        } else if (Objects.equals(name, "") && !Objects.equals(type, "") && !Objects.equals(material, "")) {
+            cookbookList = recipeService.findByMaterialLikeAndType(material, type);
+            // 三個都不為空
+        } else if (!Objects.equals(name, "") && !Objects.equals(type, "") && !Objects.equals(material, "")) {
+            cookbookList = recipeService.findByNameLikeAndMaterialLikeAndType(name, material, type);
         } else {
             cookbookList = recipeService.findAll();
         }

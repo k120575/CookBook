@@ -13,5 +13,11 @@ public interface CookbookRepository extends JpaRepository<Cookbook, Integer> {
 
     List<Cookbook> findByNameLikeAndType(String name, String type);
 
-    List<Cookbook> findByMaterial(String material);
+    List<Cookbook> findByMaterialLike(String material);
+
+    List<Cookbook> findByNameLikeAndMaterialLike(String name, String material);
+
+    List<Cookbook> findByMaterialLikeAndType(String material, String type);
+
+    List<Cookbook> findByNameLikeAndMaterialLikeAndType(String name, String material, String type);
 }

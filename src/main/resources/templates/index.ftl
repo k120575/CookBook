@@ -17,6 +17,7 @@
                            autofocus="autofocus" data-rule-required="true" data-msg-required="請輸入帳號。"
                     />
                 </div>
+
                 <div class="input-group">
                     <span class="input-group-addon"><i class="icon_profile"></i></span>
                     <select name="type" id="type" class="form-control">
@@ -25,6 +26,12 @@
                         <option value="西餐">西餐</option>
                         <option value="甜點">甜點</option>
                     </select>
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_profile"></i></span>
+                    <input type="text" name="material" id="material" class="form-control" placeholder="原料"
+                           autofocus="autofocus" data-rule-required="true" data-msg-required="請輸入原料"/>
                 </div>
             </div>
             <br>
