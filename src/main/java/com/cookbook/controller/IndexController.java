@@ -30,8 +30,8 @@ public class IndexController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/add")
-    public ModelAndView toAddRecipe(ModelAndView modelAndView){
+    @PostMapping(value = "/add")
+    public ModelAndView add(ModelAndView modelAndView){
         modelAndView.setViewName("add");
         return modelAndView;
     }
